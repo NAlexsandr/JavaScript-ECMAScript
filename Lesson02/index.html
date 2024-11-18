@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson02</title>
+  </head>
+  <body>
+    <script>
+      //Задание 1: "Управление библиотекой книг"
+      class Book {
+        title = ``;
+        author = ``;
+        pages = 0;
+        constructor(title, author, pages) {
+          this.title = title;
+          this.author = author;
+          this.pages = pages;
+        }
+        displayInfo() {
+          console.log(`Название: `, this.title, `,`, `Автор: `, this.author, `,`, `Страниц: `, this.pages);
+        }
+      }
+      const primer = new Book(`Букварь`, `Буратино`, 50);
+      primer.displayInfo();
+      //Задание 2: "Управление списком студентов"
+      class Student {
+        name = ``;
+        age = 0;
+        grade = ``;
+        constructor(name, age, grade) {
+          this.name = name;
+          this.age = age;
+          this.grade = grade;
+        }
+        displayInfo() {
+          console.log(`Name: ${this.name}, Age: ${this.age}, Grade: ${this.grade}`);
+        }
+      }
+      const petrov = new Student(`Андрей`, 23, `Математика`);
+      petrov.displayInfo();
+    </script>
+  </body>
+</html>
