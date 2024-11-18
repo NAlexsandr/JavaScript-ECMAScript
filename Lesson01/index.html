@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson01</title>
+  </head>
+  <body>
+    <script>
+      // Задание №1
+      // Нахождение минимального числа в массиве
+
+      const arr = [1, 5, 7, 9];
+      console.log(Math.min(...arr));
+
+      // Задание №2
+      // Создание счетчика
+      function createCounter() {
+        let counter = 0;
+        return {
+          increment: function () {
+            counter = counter + 1;
+          },
+          decrement: function () {
+            counter = counter - 1;
+          },
+          getValue: function () {
+            return counter;
+          },
+        };
+      }
+      let count = createCounter();
+      count.increment();
+      count.increment();
+      count.decrement();
+      console.log(count.getValue());
+
+      // Задание №3
+      // Рекурсивный поиск элемента по классу
+      function findElementByClass(root, className) {
+        if (root.classList.contains(className)) {
+          return root;
+        }
+        for (let el = 0; el < root.children.length; el++) {
+          const foundEl = findElementByClass(root.children[el], className);
+          if (foundEl) {
+            return foundEl;
+          }
+        }
+        return null;
+      }
+      const rootElement = document.getElementById("root");
+      const targetElement = findElementByClass(rootElement, "my-class");
+      console.log(targetElement);
+    </script>
+  </body>
+</html>
