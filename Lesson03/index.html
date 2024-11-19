@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson03</title>
+  </head>
+  <body>
+    <script>
+      //Задание 1: "Управление персоналом компании"
+      class Employee {
+        name;
+        constructor(name) {
+          this.name = name;
+        }
+        displayInfo() {
+          console.log(`Name: ${this.name}`);
+        }
+      }
+      class Manager extends Employee {
+        department;
+        constructor(name, department) {
+          super(name);
+          this.department = department;
+        }
+        displayInfo() {
+          console.log(`Name: ${this.name}, Department: ${this.department}`);
+        }
+      }
+      const student1 = new Employee(`Андрей`);
+      student1.displayInfo();
+      const manager = new Manager(`Алексей`, `Финансовый отдел`);
+      manager.displayInfo();
+
+      //Задание 2: "Управление списком заказов"
+      class Product {
+        name;
+        price;
+        constructor(name, price) {
+          this.name = name;
+          this.price = price;
+        }
+        print() {
+          console.log(` ${this.name}, ${this.price}`);
+        }
+      }
+      class Order {
+        orderNumber;
+        products = [];
+        constructor(orderNumber, products) {
+          this.orderNumber = orderNumber;
+          this.products = [];
+        }
+        addProduct(product) {
+          this.products.push(product);
+        }
+        getTotalPrice() {
+          let totalPrice = 0;
+          this.products.forEach(function (item) {
+            totalPrice = totalPrice + item.price;
+          });
+          console.log(totalPrice);
+        }
+      }
+      const product1 = new Product(`Футболка`, 1000);
+      const product2 = new Product(`Кроссовки`, 5000);
+      const manOrder = new Order(1);
+      manOrder.addProduct(product1);
+      manOrder.addProduct(product2);
+      manOrder.getTotalPrice();
+    </script>
+  </body>
+</html>
