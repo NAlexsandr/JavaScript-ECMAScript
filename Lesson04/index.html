@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson04</title>
+  </head>
+  <body>
+    <h1 id="color">Меняю цвет на красный</h1>
+    <script>
+      // Задание 1: "Получение данных о пользователе" Реализуйте асинхронную функцию для получения данных о пользователе с удаленного сервера:
+
+      async function getUserData(userId) {
+        fetch(`http://127.0.0.1:5500/users.html`)
+          .then((result) => {
+            if (result.ok) {
+              return result.json();
+            }
+          })
+          .then((data) => {
+            let i = data.length;
+            data.forEach((element) => {
+              if (element.id == userId) {
+                console.log(`Есть элемент с таким номером ${element.id}`);
+                i = data.indexOf(element);
+              }
+            });
+
+            if (i == data.length) {
+              console.log(`Нет элемента с номером ${userId}`);
+            }
+          });
+      }
+
+      getUserData(3);
+      getUserData(5);
+
+      //Задание 2: "Отправка данных на сервер"
+
+      async function saveUserData(user) {
+        try {
+          const response = await fetch(`http://127.0.0.1:5500/users.html`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(user),
+          });
+          if (!response.ok) {
+            throw new Error(`Не удалось сохранить данные пользователя`);
+          }
+        } catch (error) {
+          return Promise.reject(error.message);
+        }
+      }
+      const user = {
+        name: `Александр`,
+        tel: 8322223222,
+        email: `souzpred@mail.ru`,
+      };
+
+      saveUserData(user);
+
+      //Задание 3: "Изменение стиля элемента через заданное время"
+
+      function changeStyleDelayed(elementId, delay) {
+        setTimeout(() => {
+          const elId = document.getElementById(elementId);
+          console.log(elId);
+          elId.style.color = `red`;
+        }, delay);
+      }
+      changeStyleDelayed(`color`, 2000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+
+# <script>
+#       HTTP[`const responseN = fetch(`http://127.0.0.1:5500/Lesson04/index.html`)`;]
+#       HTTP[console.log(responseN.response.json());]
+# </script>
+GET 
